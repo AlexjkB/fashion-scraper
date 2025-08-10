@@ -51,10 +51,7 @@ def parse_products(html: str):
     return products
 
 def fetch_pdp_fit_details(url: str) -> str | None:
-    """
-    Visit the product detail page and extract the visible text from the
-    fit/details blocks (including model info and fabric/care).
-    """
+
     if not url:
         return None
 
@@ -105,7 +102,7 @@ if __name__ == "__main__":
         p["fit_details"] = fetch_pdp_fit_details(p.get("link"))
         time.sleep(0.4)
 
-    with open("products.csv", "w", newline="", encoding="utf-8") as f:
+    with open("reformation.csv", "w", newline="", encoding="utf-8") as f:
         writer = csv.DictWriter(
             f,
             fieldnames=["name", "price", "image", "link", "fit_details"]
